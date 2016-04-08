@@ -9,12 +9,15 @@ module SolidusExtendedAddresses
       g.test_framework :rspec
     end
 
+    initializer "solidus_extended_addresses.permitted_attributes", before: :load_config_initializers do |app|
+      Spree::PermittedAttributes.address_attributes << :title
+    end
+
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
-
-      Spree::PermittedAttributes.address_attributes << :title
     end
 
     config.to_prepare(&method(:activate).to_proc)
