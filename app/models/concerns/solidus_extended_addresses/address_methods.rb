@@ -3,7 +3,7 @@ module SolidusExtendedAddresses
     extend ActiveSupport::Concern
 
     def full_name
-      "#{title} #{firstname} #{lastname}".strip
+      "#{title} #{super}".strip
     end
   end
 end
