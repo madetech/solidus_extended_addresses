@@ -1,6 +1,7 @@
-FactoryGirl.define do
-  # Define your Spree extensions Factories within this file to enable applications, and other extensions to use and override them.
-  #
-  # Example adding this to your spec_helper will load these Factories for use:
-  # require 'solidus_extended_addresses/factories'
+require 'spree/testing_support/factories/address_factory'
+
+FactoryGirl.modify do
+  factory :address do
+    title 'Mr'
+  end
 end
