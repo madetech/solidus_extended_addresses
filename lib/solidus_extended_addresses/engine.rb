@@ -9,7 +9,7 @@ module SolidusExtendedAddresses
       g.test_framework :rspec
     end
 
-    initializer "solidus_extended_addresses.permitted_attributes", before: :load_config_initializers do |app|
+    initializer 'solidus_extended_addresses.permitted_attributes', after: :load_config_initializers do
       Spree::PermittedAttributes.address_attributes << :title
     end
 
